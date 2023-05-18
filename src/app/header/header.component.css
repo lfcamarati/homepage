@@ -1,0 +1,25 @@
+.td-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.td-navbar {
+  min-height: 4rem;
+  margin: 0;
+  z-index: 32;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 0 0 10px 1px rgb(0 0 0 / 20%);
+}
+
+.navbar-expand {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.td-navbar .nav-link {
+  font-size: 14px;
+  color: #0e1e33!important;
+  text-transform: none;
+}

@@ -1,0 +1,51 @@
+.tbl-verbs {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.tbl-verbs thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.tbl-verbs th,
+.tbl-verbs td {
+  border-right: 1px solid #dddddd;
+  padding: 12px 15px;
+}
+
+.tbl-verbs tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.tbl-verbs tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.tbl-verbs tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.tbl-verbs tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+.question {
+  cursor: pointer;
+  width: auto;
+  display: block;
+}
+
+.success {
+  background-color: rgb(166, 206, 166);
+}
+
+.wrong {
+  background-color: rgb(221, 178, 178);
+}

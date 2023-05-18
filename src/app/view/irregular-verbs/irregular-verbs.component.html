@@ -1,0 +1,46 @@
+<header class="py-4 mt-4">
+  <h1 class="display-4">Irregular Verbs</h1>
+  <p class="lead mb-0">
+    You can use the default mode by clicking on the cell to reveal the corresponding content for each verb (click again to hide it), or use the answer mode to type the verbs and check the results.
+  </p>
+</header>
+
+<div class="py-4">
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="questionMode" (click)="initQuestionMode()">
+      Answer Mode
+    </label>
+  </div>
+  
+  <table class="tbl-verbs">
+    <thead>
+      <tr>
+        <td>Infinitive</td>
+        <td>Past Simple</td>
+        <td>Past Participle</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let verb of verbs">
+        <td>{{verb.base}}</td>
+        <td (click)="toggle(verb, verb.pastSimple)">
+          <span class="question" *ngIf="!questionMode">{{verb.getValue(verb.pastSimple)}}</span>
+          <span *ngIf="questionMode">
+            <input type="text" [(ngModel)]="verb.pastSimple.answer" 
+              [ngClass]="!questionChecked ? '' : verb.check(verb.pastSimple) ? 'success' : 'wrong'">
+          </span>
+        </td>
+        <td (click)="toggle(verb, verb.pastParticiple)">
+          <span class="question" *ngIf="!questionMode">{{verb.getValue(verb.pastParticiple)}}</span>
+          <span *ngIf="questionMode">
+            <input type="text" [(ngModel)]="verb.pastParticiple.answer"
+            [ngClass]="!questionChecked ? '' : verb.check(verb.pastParticiple) ? 'success' : 'wrong'">
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button *ngIf="questionMode" (click)="checkAnswers()">Check answers!</button>
+</div>
