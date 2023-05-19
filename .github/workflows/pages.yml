@@ -1,4 +1,8 @@
 name: deploy github pages
+on:
+  push:
+    branches:
+      - main
 uses: tagus/git-deploy@v0.4.1
 with:
   changes: public
