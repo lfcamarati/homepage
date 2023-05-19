@@ -3,11 +3,24 @@ on:
   push:
     branches:
       - main
-uses: tagus/git-deploy@v0.4.1
-with:
-  changes: public
-  repository: git@github.com:lfcamarati/lfcamarati.github.io.git
-  ssh_key: ${{ secrets.ACTION_TOKEN }}
-  name: Lucas Câmara
-  email: lfcamara.ti@gmail.com
-  clean_repo: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      - uses: actions/checkout@v2
+      - name: creates output
+        run: |
+          npm install
+          npm run build
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.ACTION_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.ACTION_TOKEN }}
+        with:
+          source-directory: "dist/homepage"
+          destination-github-username: "lfcamara.ti"
+          destination-repository-name: "lfcamarati.github.io"
+          user-email: lfcamara.ti@gmail.com
+          target-branch: main
